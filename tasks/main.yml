@@ -1,0 +1,18 @@
+---
+# tasks file for ansible-role-raspotify
+
+- name: Get installer
+  ansible.builtin.get_url:
+    url: curl -sL https://dtcooper.github.io/raspotify/install.sh
+    dest: /tmp/raspotify/install.sh
+
+- name: Run installer
+  ansible.builtin.script:
+    cmd: /tmp/raspotify/install.sh
+  become: true
+
+- name: Configure
+  template:
+    src: raspotify.j2
+    dest: /etc/default/raspotify
+  become: true

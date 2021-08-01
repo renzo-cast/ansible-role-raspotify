@@ -1,0 +1,18 @@
+galaxy_info:
+  author: renzo-cast
+  description: The unofficial ansible role for installing and configuring https://github.com/dtcooper/raspotify
+
+  issue_tracker_url: http://github.com/renzo-cast/ansible-role-raspotify/issues
+  license: MIT
+
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+
+  galaxy_tags:
+    - raspotify
+    - raspberry-pi
+    - spotify

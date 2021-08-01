@@ -1,0 +1,10 @@
+---
+# defaults file for ansible-role-raspotify
+
+# For more information on these variables see https://github.com/dtcooper/raspotify#configuration
+device_name:
+bitrate: 160
+options:
+volume_args:
+cache_args:
+backend_args:
