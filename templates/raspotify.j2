@@ -1,10 +1,18 @@
 # /etc/default/raspotify -- Arguments/configuration for librespot
 
 # Device name on Spotify Connect
-{{ 'DEVICE_NAME="{{ device_name }}"' if device_name is not none else '#DEVICE_NAME="raspotify"' }}
+{% if device_name is not none %}
+DEVICE_NAME="{{ device_name }}"
+{% else %}
+#DEVICE_NAME="raspotify"
+{% endif %}
 
 # Bitrate, one of 96 (low quality), 160 (default quality), or 320 (high quality)
-{{ 'BITRATE="{{ bitrate }}"' if bitrate is not none else '#BITRATE="160"' }}
+{% if bitrate is not none %}
+BITRATE="{{ bitrate }}"
+{% else %}
+#BITRATE="160"
+{% endif %}
 
 # Additional command line arguments for librespot can be set below.
 # See `librespot -h` for more info. Make sure whatever arguments you specify
@@ -18,24 +26,44 @@
 # To choose a different output device (ie a USB audio dongle or HDMI audio out),
 # use `--device` with something like `--device hw:0,1`. Your mileage may vary.
 #
-{{ 'OPTIONS="{{ options }}"' if options is not none else '#OPTIONS="--username <USERNAME> --password <PASSWORD>"' }}
+{% if options is not none %}
+OPTIONS="{{ options }}"
+{% else %}
+#OPTIONS="--username <USERNAME> --password <PASSWORD>"
+{% endif %}
 
 
 # Uncomment to use a cache for downloaded audio files. Cache is disabled by
 # default. It's best to leave this as-is if you want to use it, since
 # permissions are properly set on the directory `/var/cache/raspotify'.
-{{ 'CACHE_ARGS="{{ cache_args }}"' if cache_args is not none else '#CACHE_ARGS="--cache /var/cache/raspotify"' }}
+{% if cache_args is not none %}
+CACHE_ARGS="{{ cache_args }}"
+{% else %}
+#CACHE_ARGS="--cache /var/cache/raspotify"
+{% endif %}
 
 # By default, the volume normalization is enabled, add alternative volume
 # arguments here if you'd like, but these should be fine.
-{{ 'VOLUME_ARGS="{{ volume_args }}"' if volume_args is not none else '#VOLUME_ARGS="--enable-volume-normalisation --volume-ctrl linear --initial-volume=100""' }}
+{% if volume_args is not none %}
+VOLUME_ARGS="{{ volume_args }}"
+{% else %}
+#VOLUME_ARGS="--enable-volume-normalisation --volume-ctrl linear --initial-volume=100"
+{% endif %}
 
 
 # Backend could be set to pipe here, but it's for very advanced use cases of
 # librespot, so you shouldn't need to change this under normal circumstances.
-{{ 'BACKEND_ARGS="{{ backend_args }}"' if backend_args is not none else '#BACKEND_ARGS="--backend alsa"' }}
+{% if backend_args is not none %}
+BACKEND_ARGS="{{ backend_arg }}"
+{% else %}
+#BACKEND_ARGS="--backend alsa"
+ {% endif %}
 
 # The displayed device type in Spotify clients.
 # Can be "unknown", "computer", "tablet", "smartphone", "speaker", "tv",
 # "avr" (Audio/Video Receiver), "stb" (Set-Top Box), and "audiodongle".
-{{ 'DEVICE_TYPE="{{ device_type }}"' if device_type is not none else '#DEVICE_TYPE="speaker"' }}
+{% if device_type is not none %}
+DEVICE_TYPE="{{ device_type }}"
+{% else %}
+#DEVICE_TYPE="speaker"
+{% endif %}

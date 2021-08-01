@@ -3,12 +3,11 @@
 
 - name: Get installer
   ansible.builtin.get_url:
-    url: curl -sL https://dtcooper.github.io/raspotify/install.sh
-    dest: /tmp/raspotify/install.sh
+    url: https://dtcooper.github.io/raspotify/install.sh
+    dest: /tmp/raspotify_install.sh
 
 - name: Run installer
-  ansible.builtin.script:
-    cmd: /tmp/raspotify/install.sh
+  command: sh /tmp/raspotify_install.sh
   become: true
 
 - name: Configure

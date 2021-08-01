@@ -8,3 +8,4 @@ options:
 volume_args:
 cache_args:
 backend_args:
+device_type:
